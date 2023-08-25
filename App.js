@@ -1,5 +1,7 @@
 import "react-native-gesture-handler";
 import React, { useContext } from "react";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { useRoute } from "./routes";
@@ -14,7 +16,8 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 import { GlobalStateProvider } from "./components/GlobalStateProvider";
-
+import { persistor, store } from "./redux/store";
+import { Text } from "react-native";
 
 export default function App() {
   // const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -34,14 +37,20 @@ export default function App() {
   const routing = useRoute(false);
 
   return (
-    <AuthStateProvider>
-      <GlobalStateProvider>
-        <NavigationContainer>
-          {routing}
+    <Provider store={store}>
+      <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+        <AuthStateProvider>
+          <GlobalStateProvider>
+            {/* <Provider store={store}> */}
+            <NavigationContainer>
+              {routing}
 
-          <StatusBar style="auto" />
-        </NavigationContainer>
-      </GlobalStateProvider>
-    </AuthStateProvider>
+              <StatusBar style="auto" />
+            </NavigationContainer>
+            {/* </Provider> */}
+          </GlobalStateProvider>
+        </AuthStateProvider>
+      </PersistGate>
+    </Provider>
   );
 }
