@@ -7,10 +7,16 @@ import { FlatList } from "react-native";
 import ListItem from "../../components/ListItem";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GlobalContext } from "../../components/GlobalStateProvider";
+import { useSelector } from "react-redux";
+import { selectState, selectUserId } from "../../redux/auth/selectors";
 
 export default function DefaultScreenPosts() {
   const [posts, setPosts] = useState(postsScreenArr);
   const { isRefetchedPosts } = useContext(GlobalContext);
+  const userId = useSelector(selectUserId);
+  console.log(userId);
+  const state = useSelector(selectState);
+  console.log("state", state);
 
   useEffect(() => {
     const getPosts = async () => {

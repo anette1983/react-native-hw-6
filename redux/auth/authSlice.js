@@ -15,21 +15,21 @@ const initialState = {
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-//   reducers: {
-//     updateUserProfile: (state, { payload }) => ({
-//       ...state,
-//       login: payload.login,
-//       userId: payload.userId,
-//       email: payload.email,
-//       photoURL: payload.photoURL,
-//       customField: payload.customField,
-//     }),
-//     authStateChange: (state, { payload }) => ({
-//       ...state,
-//       stateChange: payload.stateChange,
-//     }),
+  reducers: {
+    updateUserProfile: (state, { payload }) => ({
+      ...state,
+      // login: payload.login,
+      userId: payload.userId,
+      // email: payload.email,
+      // photoURL: payload.photoURL,
+      // customField: payload.customField,
+    }),
+    authStateChange: (state, { payload }) => ({
+      ...state,
+      stateChange: payload.stateChange,
+    }),
 //     authSignOut: () => initialState,
-//   },
+  },
 });
 
 

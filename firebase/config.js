@@ -5,6 +5,7 @@
 // import { getFirestore } from "firebase/firestore";
 // import { getStorage } from "firebase/storage";
 // Для роботи із firebase обовʼязково треба ініціалізувати проект
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";

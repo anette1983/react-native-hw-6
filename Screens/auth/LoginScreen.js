@@ -14,7 +14,9 @@ import {
 
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-import { AuthContext } from "../../components/AuthProvider";
+// import { AuthContext } from "../../components/AuthProvider";
+import { useDispatch } from "react-redux";
+import { authSignInUser } from "../../redux/auth/authOperations";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -22,9 +24,10 @@ export default function LoginScreen() {
   const [isHiddenPassword, setIsHiddenPassword] = useState(true);
   const [isShownKeyboard, setIsShownKeyboard] = useState(false);
   const navigation = useNavigation();
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  // const { isAuth, setIsAuth } = useContext(AuthContext);
   const passwordHandler = (text) => setPassword(text);
   const emailHandler = (text) => setEmail(text);
+  const dispatch = useDispatch();
 
   const reset = () => {
     setEmail("");
@@ -46,7 +49,8 @@ export default function LoginScreen() {
     console.log("Login form data: ", `email: ${email}, password: ${password}`);
     setIsShownKeyboard(false);
     Keyboard.dismiss();
-    setIsAuth(true);
+    dispatch(authSignInUser({ email, password }));
+    // setIsAuth(true);
     navigation.navigate("Home", { screen: "DefaultScreenPosts" });
     reset();
   };
