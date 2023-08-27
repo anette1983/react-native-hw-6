@@ -43,7 +43,6 @@ export default function RegistrationScreen() {
   const emailHandler = (text) => setEmail(text);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  console.log("authSignUpUser :>> ", authSignUpUser);
 
   const reset = () => {
     setLogin("");

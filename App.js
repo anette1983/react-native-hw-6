@@ -36,8 +36,8 @@ export default function App() {
     return null;
   }
 
+  console.log('auth.currentUser :>> ', auth.currentUser);
   auth.onAuthStateChanged((user) => {
-    console.log("onAuthStateChanged", user);
     setUser(user);
   });
 
