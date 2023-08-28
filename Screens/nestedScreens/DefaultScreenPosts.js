@@ -13,10 +13,9 @@ import { selectState, selectUserId } from "../../redux/auth/selectors";
 export default function DefaultScreenPosts() {
   const [posts, setPosts] = useState(postsScreenArr);
   const { isRefetchedPosts } = useContext(GlobalContext);
-  const userId = useSelector(selectUserId);
-  console.log(userId);
-  const state = useSelector(selectState);
-  console.log("state", state);
+  // const userId = useSelector(selectUserId);
+  
+ 
 
   useEffect(() => {
     const getPosts = async () => {

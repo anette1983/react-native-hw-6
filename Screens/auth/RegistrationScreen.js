@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import {
   StyleSheet,
@@ -26,7 +26,6 @@ import { TouchableOpacity } from "react-native";
 import CustomImgBg from "../../components/CustomImgBg";
 import photo from "../../assets/images/userPhoto.jpg";
 import { ImageBackground } from "react-native";
-import { AuthContext } from "../../components/AuthProvider";
 import { useDispatch } from "react-redux";
 import { authSignUpUser } from "../../redux/auth/authOperations";
 
@@ -37,7 +36,6 @@ export default function RegistrationScreen() {
   const [isHiddenPassword, setIsHiddenPassword] = useState(true);
   const [isShownKeyboard, setIsShownKeyboard] = useState(false);
   const [userPhoto, setUserPhoto] = useState(null);
-  const { isAuth, setIsAuth } = useContext(AuthContext);
   const loginHandler = (text) => setLogin(text);
   const passwordHandler = (text) => setPassword(text);
   const emailHandler = (text) => setEmail(text);
@@ -57,20 +55,10 @@ export default function RegistrationScreen() {
       return;
     }
 
-    // Alert.alert(
-    //   "Register form data: ",
-    //   `login: ${login}, email: ${email}, password: ${password}`
-    // );
-    // console.log(
-    //   "Register form data: ",
-    //   `login: ${login}, email: ${email}, password: ${password}`
-    // );
     setIsShownKeyboard(false);
     Keyboard.dismiss();
-    // setIsAuth(true);
     console.log("{login, email, password} :>> ", { login, email, password });
     dispatch(authSignUpUser({ login, email, password }));
-    // navigation.navigate("Home", { screen: "DefaultScreenPosts" });
     reset();
   };
 

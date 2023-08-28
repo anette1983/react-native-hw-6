@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -14,7 +14,6 @@ import {
 
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-// import { AuthContext } from "../../components/AuthProvider";
 import { useDispatch } from "react-redux";
 import { authSignInUser } from "../../redux/auth/authOperations";
 
@@ -24,7 +23,6 @@ export default function LoginScreen() {
   const [isHiddenPassword, setIsHiddenPassword] = useState(true);
   const [isShownKeyboard, setIsShownKeyboard] = useState(false);
   const navigation = useNavigation();
-  // const { isAuth, setIsAuth } = useContext(AuthContext);
   const passwordHandler = (text) => setPassword(text);
   const emailHandler = (text) => setEmail(text);
   const dispatch = useDispatch();
@@ -50,8 +48,6 @@ export default function LoginScreen() {
     setIsShownKeyboard(false);
     Keyboard.dismiss();
     dispatch(authSignInUser({ email, password }));
-    // setIsAuth(true);
-    navigation.navigate("Home", { screen: "DefaultScreenPosts" });
     reset();
   };
 

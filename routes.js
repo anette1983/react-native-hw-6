@@ -27,7 +27,6 @@ export const useRoute = (isAuth) => {
             headerShown: false,
           }}
         />
-        <MainStack.Screen name="Home" component={HomeScreen} />
       </MainStack.Navigator>
     );
   }

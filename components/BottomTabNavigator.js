@@ -8,15 +8,15 @@ import UserIcon from "../assets/images/user.svg";
 import GridIcon from "../assets/images/grid.svg";
 import BackIcon from "../assets/images/arrow-left.svg";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "./AuthProvider";
-import { useContext } from "react";
 import DefaultScreenPosts from "../Screens/nestedScreens/DefaultScreenPosts";
+import { useDispatch } from "react-redux";
+import { exit } from "../utils/exit";
 
 const Tabs = createBottomTabNavigator();
 
 export const BottomTabNavigator = () => {
   const navigation = useNavigation();
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const screenOptions = ({ route }) => ({
     headerShown: true,
@@ -78,8 +78,7 @@ export const BottomTabNavigator = () => {
                 <Pressable
                   style={{ marginRight: 16 }}
                   onPressOut={() => {
-                    setIsAuth(false);
-                    navigation.navigate("Login");
+                    exit(dispatch);
                   }}
                 >
                   <LogoutIcon />

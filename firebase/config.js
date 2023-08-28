@@ -1,13 +1,4 @@
-// import { initializeApp } from "firebase/app";
-// import "firebase/firestore";
-
-// import { getAuth } from "firebase/auth";
-// import { getFirestore } from "firebase/firestore";
-// import { getStorage } from "firebase/storage";
-// Для роботи із firebase обовʼязково треба ініціалізувати проект
-
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
@@ -28,6 +19,5 @@ export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
 });
 
-// export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
